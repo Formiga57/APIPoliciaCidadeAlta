@@ -7,7 +7,7 @@ namespace API.Models
         public int Id { get; set; }
         [Required, MaxLength(30)]
         public string UserName { get; set; } = null!;
-        [Required, MaxLength(30)]
+        [Required]
         public string Password { get; set; } = null!;
     }
 }
