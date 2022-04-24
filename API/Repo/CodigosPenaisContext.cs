@@ -8,5 +8,8 @@ namespace API.Repo
         {
 
         }
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<CriminalCode> CriminalCodes { get; set; } = null!;
+        public DbSet<Status> Statuses { get; set; } = null!;
     }
 }
