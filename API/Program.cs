@@ -20,6 +20,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddDbContext<CodigosPenaisContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("CodigosPenais")));
 builder.Services.AddAuthentication(opt =>
 {
