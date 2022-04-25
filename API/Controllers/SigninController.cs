@@ -7,6 +7,20 @@ namespace API.Controllers
     [Route("v1/[Controller]")]
     public class SigninController : Controller
     {
+        /// <summary>
+        /// Add username and password into the database
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     {
+        ///        "UserName": "Desired Username",
+        ///        "Password": "Desired Password"
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the user's Bearer Token</response>
+        /// <response code="400">Returns the error generated</response>
         [HttpPost]
         public async Task<ActionResult<dynamic>> SignInTask([FromBody] User user, [FromServices] IUserService userService)
         {

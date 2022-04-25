@@ -7,6 +7,20 @@ namespace API.Controllers
     [Route("v1/[Controller]")]
     public class LoginController : Controller
     {
+        /// <summary>
+        /// Checks if username and password matches in the database
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     {
+        ///        "UserName": "Your Username",
+        ///        "Password": "Your Password"
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the user's Bearer Token</response>
+        /// <response code="400">Returns the error generated</response>
         [HttpPost]
         public async Task<ActionResult<string>> LoginTask([FromBody] User user, [FromServices] IUserService userService)
         {
@@ -21,7 +35,7 @@ namespace API.Controllers
             string? token = userService.VerifyUserLogin(user);
             if (token == null)
             {
-                return BadRequest("Username or password doesn't matches!");
+                return BadRequest("Username or password doesn't match!");
             }
             return token;
         }

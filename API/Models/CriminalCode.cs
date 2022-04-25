@@ -16,7 +16,7 @@ namespace API.Models
         [Required]
         public int PrisonTime { get; set; }
         [ForeignKey("Status")]
-        public int StatusId { get; set; }
+        public int? StatusId { get; set; }
         public Status Status { get; set; } = null!;
         [Required]
         public DateTime CreateDate { get; set; }
