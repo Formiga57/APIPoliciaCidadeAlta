@@ -1,7 +1,5 @@
 using System.Linq.Expressions;
 using System.Linq;
-using System.Linq.Dynamic;
-using EntityFramework.DynamicLinq;
 using API.Models;
 using API.Repo;
 

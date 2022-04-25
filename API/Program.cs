@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Cors;
 
 // Startup
 
@@ -37,6 +38,10 @@ builder.Services.AddAuthentication(opt =>
         ValidateAudience = false,
     };
 });
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("localhostPolicy", config => { config.WithOrigins("http://localhost:3000").AllowAnyHeader(); });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,10 +52,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors("localhostPolicy");
 app.Run();
