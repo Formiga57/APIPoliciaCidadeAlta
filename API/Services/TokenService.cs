@@ -7,15 +7,15 @@ namespace API.Services
 {
     public class TokenService : ITokenService
     {
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration _Configuration;
         public TokenService(IConfiguration configuration)
         {
-            _configuration = configuration;
+            _Configuration = configuration;
         }
         public string GenerateToken(User user)
         {
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-            byte[] jwtKey = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+            byte[] jwtKey = Encoding.ASCII.GetBytes(_Configuration["Jwt:Key"]);
             SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
             {
                 Expires = DateTime.UtcNow.AddHours(1),
