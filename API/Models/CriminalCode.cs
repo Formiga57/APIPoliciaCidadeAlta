@@ -21,7 +21,7 @@ namespace API.Models
         [Required]
         public DateTime CreateDate { get; set; }
         [Required]
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         [ForeignKey("User")]
         public int CreateUserId { get; set; }
         public User CreateUser { get; set; } = null!;
