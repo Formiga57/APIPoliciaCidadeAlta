@@ -26,8 +26,16 @@ namespace API.Controllers
         [HttpPost]
         [Route("include")]
         [Authorize]
-        public ActionResult<dynamic> IncludeCriminalCode([FromBody] CriminalCode criminalCodeReceived, [FromServices] ICriminalCodeService criminalCodeService)
+        public ActionResult<dynamic> IncludeCriminalCode([FromBody] CriminalCode criminalCodeReceived, [FromServices] ICriminalCodeService criminalCodeService, [FromServices] ITokenService tokenService)
         {
+            string accessToken = Request.Headers["Authorization"].ToString().Remove(0, 7);
+            int? updateId = tokenService.GetUserIdByToken(accessToken);
+            if (updateId == null)
+            {
+                return NotFound("Can this happen?");
+            }
+            criminalCodeReceived.UpdateUserId = updateId;
+            criminalCodeReceived.CreateDate = DateTime.Now;
             criminalCodeService.IncludeCriminalCode(criminalCodeReceived);
             return "OK";
         }
@@ -63,13 +71,21 @@ namespace API.Controllers
         [HttpPost]
         [Route("update")]
         [Authorize]
-        public ActionResult<dynamic> UpdateCriminalCode([FromBody] CriminalCode criminalCode, [FromServices] ICriminalCodeService criminalCodeService)
+        public ActionResult<dynamic> UpdateCriminalCode([FromBody] CriminalCode criminalCodeReceived, [FromServices] ICriminalCodeService criminalCodeService, [FromServices] ITokenService tokenService)
         {
-            if (criminalCode != null)
+            if (criminalCodeReceived == null)
             {
                 return NotFound("Wrong Model Sent!");
             }
-            bool success = criminalCodeService.UpdateCriminalCode(criminalCode);
+            string accessToken = Request.Headers["Authorization"].ToString().Remove(0, 7);
+            int? updateId = tokenService.GetUserIdByToken(accessToken);
+            if (updateId == null)
+            {
+                return NotFound("Can this happen?");
+            }
+            criminalCodeReceived.UpdateUserId = updateId;
+            criminalCodeReceived.UpdateDate = DateTime.Now;
+            bool success = criminalCodeService.UpdateCriminalCode(criminalCodeReceived);
             return success ? "Updated!" : NotFound("Couldn't update that CriminalCode!");
         }
         /// <summary>

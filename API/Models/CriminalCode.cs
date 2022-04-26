@@ -19,12 +19,12 @@ namespace API.Models
         public int? StatusId { get; set; }
         public Status Status { get; set; } = null!;
         [Required]
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         [Required]
         public DateTime? UpdateDate { get; set; }
         [ForeignKey("User")]
-        public int CreateUserId { get; set; }
-        public User CreateUser { get; set; } = null!;
+        public int? CreateUserId { get; set; }
+        public User? CreateUser { get; set; } = null!;
         [ForeignKey("User")]
         public int? UpdateUserId { get; set; }
         public User? UpdateUser { get; set; }

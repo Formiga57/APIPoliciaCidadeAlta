@@ -22,7 +22,7 @@ namespace API.Controllers
         /// <response code="200">Returns the user's Bearer Token</response>
         /// <response code="400">Returns the error generated</response>
         [HttpPost]
-        public async Task<ActionResult<string>> LoginTask([FromBody] User user, [FromServices] IUserService userService)
+        public ActionResult<string> HandleLogin([FromBody] User user, [FromServices] IUserService userService)
         {
             if (user.UserName.Length <= 3 || user.Password.Length <= 3)
             {
