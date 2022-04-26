@@ -5,7 +5,7 @@ Este exercício consiste em criar uma API em que sejam adicionados códigos pena
 ## Relacionamento
 
 O relacionamento de tabelas utilizado e também proposto para este exercício foi o seguinte:
-![Relacionamento de tabelas](https://api.formiga57.xyz:2020/TXjpmGAbL8.png)
+![Relacionamento de tabelas](https://github.com/Formiga57/APIPoliciaCidadeAlta/blob/main/images/TXjpmGAbL8.png)
 
 ## JWT
 
@@ -14,7 +14,7 @@ Para autenticação foi utilizado o padrão Token JWT, não foi implementado um 
 ## Documentação Swagger
 
 Também foi desenvolvido a documentação completa de uso da API utilizando o próprio Swagger oferecido pelo .NET Core
-![Documentação do Swagger](https://api.formiga57.xyz:2020/AAjH0J9FZQ.png)
+![Documentação do Swagger](https://github.com/Formiga57/APIPoliciaCidadeAlta/blob/main/images/AAjH0J9FZQ.png)
 
 ## FrontEnd em React Js
 
@@ -28,13 +28,20 @@ Não foi possível finalizar o desenvolvimento do front-end para melhor visualiz
 
 É necessário ter o SQL Server instalado em seu dispositivo, desta maneira, você deve inserir o seu connection string no arquivo `appsettings.json`:
 
-![Inserindo o Connection String](https://api.formiga57.xyz:2020/Nx90ZT5fos.png)
+![Inserindo o Connection String](https://github.com/Formiga57/APIPoliciaCidadeAlta/blob/main/images/Nx90ZT5fos.png)
 
 ### Keys e Salt
 
 Também é aconselhável alterar a Key geradora do JWT e o Salt gerador do hash de senhas no `appsettings.json`:
 
-![Inserindo o Connection String](https://api.formiga57.xyz:2020/Nx90ZT5fos.png)
+<pre>
+"Jwt":{
+    "Key":"KeyJwtAqui"
+  },
+  "Auth":{
+    "Salt":"SaltSenhaAqui"
+  }
+</pre>
 
 ### Portas e URL's
 
