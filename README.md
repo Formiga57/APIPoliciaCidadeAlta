@@ -26,7 +26,7 @@ Não foi possível finalizar o desenvolvimento do front-end para melhor visualiz
 
 ### SQL Server
 
-É necessário ter o SQL Server instalado em seu dispositivo, desta maneira, você deve inserir o seu connection string no arquivo <pre>appsettings.json</pre>:
+É necessário ter o SQL Server instalado em seu dispositivo, desta maneira, você deve inserir o seu connection string no arquivo `appsettings.json`:
 
 ![Inserindo o Connection String](https://api.formiga57.xyz:2020/Nx90ZT5fos.png)
 
